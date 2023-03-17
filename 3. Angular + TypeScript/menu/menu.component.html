@@ -1,0 +1,18 @@
+<div class="menu-container" ngbDropdown>
+  <menu-button class="animate__animated animate__fadeInDown"
+               (click)="toggleMenu()"
+               [pressed]="show"></menu-button>
+  <div class="dt-dropdown-menu"
+       [class.show]="show">
+    <div class="items-list">
+      <ul>
+        <ng-container *ngFor="let item of menuItems">
+            <li class="animate__animated" 
+                [ngClass]="{'animate__fadeInUp' : show}">
+                <a href="{{item.link}}" (click)="toggleMenu()">{{item.text}}</a>
+            </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>

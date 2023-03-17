@@ -1,0 +1,78 @@
+:host {
+  display: flex;
+  aspect-ratio: 1;
+  z-index: 10;
+  position: relative;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  .menu-icon-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    aspect-ratio: 1;
+
+    .icon-dot {
+      border-radius: 50%;
+      background-color: #222222;
+      width: 8px;
+      height: 8px;
+      transition: all 0.3s ease;
+    }
+
+    &.menu-hidden {
+      &:not(:hover) {
+        .icon-dot {
+          &:nth-child(4n+1) {
+            background-color: #23B0FF !important;
+          }
+        }
+      }
+
+      &:hover {
+        .icon-dot {
+          &:nth-child(2n) {
+            background-color: #23B0FF !important;
+          }
+        }
+      }
+
+      &.white {
+        .icon-dot {
+          background-color: white;
+        }
+      }
+    }
+
+    &.menu-showed {
+      .icon-dot {
+        background-color: #666666;
+
+        &:nth-child(2n+2) {
+          opacity: 0;
+        }
+      }
+
+      &:hover {
+        .icon-dot {
+          background-color: white !important;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 648px) {
+  :host {
+    .menu-icon-container {
+      .icon-dot {
+        width: 5px;
+        height: 5px;
+      }
+    }
+  }
+}
